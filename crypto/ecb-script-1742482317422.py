@@ -5,7 +5,7 @@ import requests
 
 ### Variables ###
 
-URL = "http://10.64.166.75:5000/oracle"
+URL = "http://MACHINE_IP:5000/oracle"
 
 BLOCK_SIZE = 0
 
